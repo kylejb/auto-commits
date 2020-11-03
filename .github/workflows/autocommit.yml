@@ -13,10 +13,12 @@ jobs:
   auto_commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2      
+      - uses: actions/checkout@v2.3.4      
         with:
          persist-credentials: false
          fetch-depth: 0
+         github_token: ${{ secrets.GITHUB_TOKEN }}
+         branch: ${{ github.ref }}
 
       - name: Modify last update
         run: |
@@ -27,7 +29,7 @@ jobs:
         run: |
           git config --local user.email ${{ secrets.GIT_USER_EMAIL }}
           git config --local user.name "kylejb"
-          git add -A
+          git add .
           
           arr[0]="1: auto commit"
           arr[1]="2: auto commit"
@@ -43,9 +45,9 @@ jobs:
           git commit -m "${arr[$rand]}"
           
       - name: GitHub Push
-        uses: ad-m/github-push-action@v0.5.0
+        uses: ad-m/github-push-action@v0.6.0
         with:
           force: true
           directory: "."
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+          branch: ${{ github.ref }}
