@@ -17,8 +17,6 @@ jobs:
         with:
          persist-credentials: false
          fetch-depth: 0
-         github_token: ${{ secrets.GITHUB_TOKEN }}
-         branch: ${{ github.ref }}
 
       - name: Modify last update
         run: |
