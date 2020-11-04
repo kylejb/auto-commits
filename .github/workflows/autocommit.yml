@@ -1,13 +1,12 @@
-name: Auto commit
+name: Auto Commit
 
 on:
-
   push:
     branches:
       - main
       
   schedule:
-  - cron: "30 * * * *"
+  - cron: "0 7-11 * * *"
 
 jobs:
   auto_commit:
@@ -29,14 +28,10 @@ jobs:
           git config --local user.name "kylejb"
           git add .
           
-          arr[0]="1: auto commit"
-          arr[1]="2: auto commit"
-          arr[2]="3: auto commit"
-          arr[3]="4: auto commit"
-          arr[4]="5: auto commit"
-          arr[5]="6: auto commit"
-          arr[6]="7: auto commit"
-          arr[7]="8: auto commit"
+          arr[0]="auto commit"
+          arr[1]="auto commit"
+          arr[2]="auto commit"
+          arr[3]="auto commit"
           
           rand=$[$RANDOM % ${#arr[@]}]
           
